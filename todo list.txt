@@ -1,0 +1,69 @@
+TODO LIST
+1. ganti ownership /var/www/html
+	chown -R user /var/www/html
+
+2. grant privileges mysql
+	mysql -h localhost -u root -p 
+	
+	GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '1' WITH GRANT OPTION;
+	FLUSH PRIVILEGES;
+	exit
+	
+3. allow remote
+	nano /etc/mysql/mysql.conf.d/mysqld.cnf
+	#bind address = 
+	
+	service mysql restart
+	
+4. activate mod rewrite
+	a2enmod rewrite
+	
+5. allow mod rewrite
+	nano /etc/apache2/sites-enabled/000-default.conf
+	
+	tambahkan ini :
+	<Directory /var/www/html>
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride All
+                Order allow,deny
+                allow from all
+	</Directory>
+	
+	
+	service apache2 restart
+	
+	
+6. install dhcp-server
+	apt-get install isc-dhcp-server -y
+
+7. konfig dhcp-server
+	nano /etc/default/isc-dhcp-server
+	
+	nano /etc/dhcp/dhcpd.conf
+	subnet 192.168.0.0 netmask 255.255.255.0 {
+		range 192.168.0.10 192.168.0.80;
+	}
+	
+	
+	service isc-dhcp-server restart
+
+
+
+8. delete table
+	SET FOREIGN_KEY_CHECKS = 0; 
+TRUNCATE TABLE tb_media;
+TRUNCATE TABLE tb_quiz;
+TRUNCATE TABLE tb_quiz_mapel;
+TRUNCATE TABLE tb_quiz_session;
+TRUNCATE TABLE tb_quiz_session_log;
+TRUNCATE TABLE tb_quiz_soal;
+TRUNCATE TABLE tb_quiz_soal_pg;
+TRUNCATE TABLE tb_ruang;
+TRUNCATE TABLE tb_ruang_member;
+TRUNCATE TABLE tb_server;
+TRUNCATE TABLE tb_soal;
+TRUNCATE TABLE tb_soal_pg;
+SET FOREIGN_KEY_CHECKS = 1; 
+DELETE FROM tb_user WHERE user_level = 1;
+OPTIMIZE TABLE tb_user;
+

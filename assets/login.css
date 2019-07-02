@@ -1,0 +1,40 @@
+body{
+    background:#ccc;
+}
+.header-wrapper{
+    background: #0d6aad; padding:10px;
+}
+.header-logo{
+    width:50px;
+}
+.header-logo img{
+    width:100%;
+}
+.body{
+    margin-top:50px;width:400px; margin:50px auto;
+}
+.flat{ border-radius:0;}
+@media (max-width: 600px) {
+    .body {
+        width:90%;
+    }
+}
+
+.videoWrap{
+    position: relative;
+}
+.top,.bottom{
+    position:absolute; width:40px; height:40px;
+}
+.top{
+    top:20px; border-top:solid 4px #d22d72;
+}
+.left{
+    left:20px;border-left:solid 4px #d22d72;
+}
+.right{
+    right: 20px; border-right:solid 4px #d22d72;
+}
+.bottom{
+    bottom: 20px; border-bottom: solid 4px #d22d72;
+}
